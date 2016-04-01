@@ -133,7 +133,12 @@ void Logging::Initilize(string Program_Name)
 	Logging_Console.Create_Zone("Information Log", 84, 16, 120, 30);
 	Current_Time = time(0);
 	Date_and_Time = ctime(&Current_Time);
-	string File = "Log/" + Date_and_Time;
+	string Temp = "";
+	for (int a = 0; a < Date_and_Time.size() - 1; a++) {
+		Temp = Temp + Date_and_Time[a];
+	}
+	Date_and_Time = Temp;
+	string File = "Log Data.log";
 	Log_File.open(File.c_str());
 	if (Log_File.is_open()) {
 		Log(1, "Created New Log File", "Logging/Initilize");
@@ -168,7 +173,7 @@ void Logging::Log(int Type, string Log, string Location)
 		Logging_Console.Print_Zone(Line, "General Log");
 		Logging_Console.New_Line();
 	}
-	Log_File << Line;
+	Log_File << Line << "\n";
 	if (Type == 5) {
 		Logging_Console.Print_Zone(Line, "Information Log");
 		Logging_Console.New_Line();
