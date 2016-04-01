@@ -136,8 +136,8 @@ void Logging::Initilize(string Program_Name)
 	string File = "Log/" + Date_and_Time;
 	Log_File.open(File.c_str());
 	if (Log_File.is_open()) {
-		Log(1, "Created New Log File", "Consolas/Logging");
-		Log(6, Date_and_Time, "Consolas/Logging");
+		Log(1, "Created New Log File", "Logging/Initilize");
+		Log(6, Date_and_Time, "Logging/Initilize");
 	}
 	Logging_Console.Print_Zone(Program_Name, "Program tital");
 }
@@ -219,4 +219,6 @@ void Logging::Log_FPS(float FPS)
 
 void Logging::Terminate()
 {
+	Log(1, "Terminated Log", "Logging/Terminate");
+	Log_File.close();
 }
